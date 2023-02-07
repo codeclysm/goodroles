@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import {Container, Typography} from "@mui/material";
+import { Container, Typography } from '@mui/material';
 
 function App() {
   return (
-      <Container>
-        <Typography variant='h1'>GoodRoles</Typography>
-      </Container>
+    <Container>
+      <Typography variant="h1">GoodRoles</Typography>
+    </Container>
   );
 }
 
