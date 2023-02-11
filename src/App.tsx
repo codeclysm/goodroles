@@ -1,12 +1,19 @@
 import React from 'react';
-import './App.css';
-import { Container, Typography } from '@mui/material';
+import {
+  GlobalStyles,
+  ThemeProvider,
+} from '@mui/material';
+
+import './i18n';
+import theme from './Theme';
+import Home from './routes/Home';
 
 function App() {
   return (
-    <Container>
-      <Typography variant="h1">GoodRoles</Typography>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles styles={{ body: { background: '#EEEEEE' } }} />
+      <Home />
+    </ThemeProvider>
   );
 }
 
