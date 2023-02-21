@@ -85,6 +85,9 @@ function HomeLogged() {
           <RolesPieChart />
         </Grid2>
       </Grid2>
+      <Typography component="div" sx={{mt: 2}}>
+        {t('HomePrivacy')}
+      </Typography>
     </Container>
   );
 }
