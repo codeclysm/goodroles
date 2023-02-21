@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   Pie,
   PieChart,
   Sector,
   type SectorProps,
 } from 'recharts';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, firestore } from '../firebase';
+import { collection, orderBy, query, where } from 'firebase/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 declare type PieSectorDataItem = SectorProps & {
   percent?: number;
@@ -18,27 +22,53 @@ declare type PieSectorDataItem = SectorProps & {
   };
 };
 
+type DataMap = Record<string, number>;
+
 export default function RolesPieChart() {
-  const data = [
-    { name: 'Imp of the Perverse', value: 3 },
-    { name: 'Archipelago', value: 3 },
-    { name: 'Fabula Ultima', value: 1 },
-    { name: 'facing the Titan', value: 1 },
-  ];
+  const [user] = useAuthState(auth, {});
+  if (!user) {
+    throw new Error("user shouldn't be null or undefined");
+  }
+
+  const ref = collection(firestore, 'roles');
+  const q = query(ref, where('uid', '==', user.uid), orderBy('date', 'desc'));
+  const [roles, _, err] = useCollectionData(q);
+  if (err) {
+    throw err;
+  }
+
+  const data = useMemo(() => {
+    const data: DataMap = {};
+
+    roles?.forEach((role) => {
+      if (!data[role.game]) {
+        data[role.game] = 0
+      }
+
+      data[role.game]++
+    })
+
+    return Object.keys(data).map((name) => ({name, value: data[name]}))
+      .sort((a, b) => b.value - a.value)
+  }, [roles]);
+
 
   const [activeIndex, setActiveIndex] = useState(0);
-  console.debug(data)
+
+  if (data.length === 0) {
+    return null;
+  }
 
   return (
-      <PieChart width={400} height={400}>
+      <PieChart width={500} height={500}>
         <Pie
           activeIndex={activeIndex}
           activeShape={renderActiveShape}
           data={data}
           cx="50%"
           cy="50%"
-          innerRadius={60}
-          outerRadius={80}
+          innerRadius={120}
+          outerRadius={180}
           fill="#8884d8"
           dataKey="value"
           onMouseEnter={(_, index) => {
@@ -78,6 +108,8 @@ function renderActiveShape(props: PieSectorDataItem) {
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
   const textAnchor = cos >= 0 ? 'start' : 'end';
+
+  console.debug(props)
 
   return (
     <g>

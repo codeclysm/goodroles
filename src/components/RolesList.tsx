@@ -38,7 +38,7 @@ export default function RolesList() {
             <Grid2 xs={3}>
               <Typography fontSize="0.85rem">{displayDate(role.date, i18n.language)}</Typography></Grid2>
             <Grid2 xs={5}><Typography fontSize="1.2rem" fontWeight='bold'>{role.game}</Typography></Grid2>
-            <Grid2 xs={4}><Typography>{role.campaign}</Typography></Grid2>
+            <Grid2 xs={4}><Typography>{role.comments}</Typography></Grid2>
           </Grid2>
         </Card>
       ))}

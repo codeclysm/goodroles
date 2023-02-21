@@ -9,7 +9,7 @@ const it = {
     HomeInsertGame: "Quando hai ruolato l'ultima volta?",
     FormDateLabel: 'Data',
     FormGameLabel: 'Gioco',
-    FormCampaignLabel: 'Campagna',
+    FormCommentsLabel: 'Commenti',
     FormSubmitButton: 'Salva'
   },
 };

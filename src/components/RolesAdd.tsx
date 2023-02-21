@@ -16,7 +16,7 @@ export default function RolesAdd() {
 
   const [date, setDate] = useState(dayjs());
   const [game, setGame] = useState('');
-  const [campaign, setCampaign] = useState('');
+  const [comments, setComments] = useState('');
 
   const [user] = useAuthState(auth, {});
   if (!user) {
@@ -31,7 +31,7 @@ export default function RolesAdd() {
         uid: user.uid,
         date: date.toDate(),
         game,
-        campaign,
+        comments,
       });
     } catch (e) {
       console.debug(e);
@@ -66,10 +66,10 @@ export default function RolesAdd() {
         </Grid2>
         <Grid2>
           <TextField
-            label={t('FormCampaignLabel')}
-            value={campaign}
+            label={t('FormCommentsLabel')}
+            value={comments}
             onChange={(event) => {
-              setCampaign(event.target.value);
+              setComments(event.target.value);
             }}
           />
         </Grid2>

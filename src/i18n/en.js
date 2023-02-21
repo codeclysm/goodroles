@@ -9,7 +9,7 @@ const en = {
     HomeInsertGame: 'When did you last role?',
     FormDateLabel: 'Date',
     FormGameLabel: 'Game',
-    FormCampaignLabel: 'Campaign',
+    FormCommentsLabel: 'Comments',
     FormSubmitButton: 'Save',
   },
 };
