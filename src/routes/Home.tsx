@@ -78,10 +78,10 @@ function HomeLogged() {
         <Grid2 xs={12}>
           <RolesAdd />
         </Grid2>
-        <Grid2 xs={7}>
+        <Grid2 xs={12} md={7}>
           <RolesList />
         </Grid2>
-        <Grid2 xs={5}>
+        <Grid2 xs={12} md={5}>
           <RolesPieChart />
         </Grid2>
       </Grid2>
