@@ -7,5 +7,6 @@ export default function Logo() {
     <Typography component="span" color="secondary" fontSize="inherit">
       Roles
     </Typography>
+    <Typography component="span">v1.0</Typography>
   </Typography>
 }
