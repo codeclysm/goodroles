@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "good-roles",
     "public": "build",
     "ignore": [
       "firebase.json",
