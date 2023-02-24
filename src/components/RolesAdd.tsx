@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { DateField, LocalizationProvider } from '@mui/x-date-pickers';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { Button, TextField } from '@mui/material';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
@@ -42,7 +42,7 @@ export default function RolesAdd() {
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={i18n.language}>
       <Grid2 container spacing={1} alignItems="stretch" sx={{ mt: 2 }}>
         <Grid2>
-          <DateField
+          <DatePicker
             label={t('FormDateLabel')}
             format="DD MMMM YYYY"
             value={date}
